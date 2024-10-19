@@ -11,6 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" type="image/png" sizes="96x96" href="assets/icons/ic_launcher.png">
+		<link rel="manifest" href="manifest.json">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -420,6 +421,16 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				if ('serviceWorker' in navigator) {
+				  window.addEventListener('load', () => {
+					navigator.serviceWorker
+					  .register('/service-worker.js')
+					  .then(() => console.log('Service Worker registrado com sucesso.'))
+					  .catch(error => console.log('Falha ao registrar o Service Worker:', error));
+				  });
+				}
+			  </script>
 
 	</body>
 </html>
